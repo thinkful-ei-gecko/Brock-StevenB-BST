@@ -17,6 +17,7 @@ class BinarySearchTree {
        and compare it to the key you want to insert.
        If the new key is less than the node's key 
        then the new node needs to live in the left-hand branch */
+       
       /* If the existing node does not have a left child, 
            meaning that if the `left` pointer is empty, 
            then we can just instantiate and insert the new node 
