@@ -99,4 +99,25 @@ const balancedBst = (bst, leftCount = 0, rightCount = 0) => {
   return (Math.abs(leftCount - rightCount) > 1 ? false : true);
 };
 
-console.log(balancedBst(main()));
+// console.log(balancedBst(main()));
+
+// problem 9 has a linear O(n) time complexity
+
+const sameBstCheck = (arr1, arr2) => {
+  const newArr1 = arr1.sort();
+  const newArr2 = arr2.sort();
+
+  if (arr1.length !== arr2.length)
+    return false;
+
+  for (let i = 0; i < arr1.length; i++) {
+    if (newArr1[i] !== newArr2[i])
+      return false;
+  }
+  return true;
+}
+
+const arr1 = [3, 5, 4, 6, 1, 0, 2];
+const arr2 = [3, 1, 5, 2, 4, 6, 0];
+
+console.log(sameBstCheck(arr1, arr2));
