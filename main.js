@@ -85,4 +85,18 @@ const thirdLargestNodeSort = (bst) => {
 } 
 
 // console.log(main());
-console.log(thirdLargestNodeSort(main()));
+// console.log(thirdLargestNodeSort(main()));
+
+// Problem 8
+
+const balancedBst = (bst, leftCount = 0, rightCount = 0) => {
+  if (!bst) 
+    return 'No BST';
+
+  leftCount = maxHeightFinder(bst.left);
+  rightCount = maxHeightFinder(bst.right);
+
+  return (Math.abs(leftCount - rightCount) > 1 ? false : true);
+};
+
+console.log(balancedBst(main()));
