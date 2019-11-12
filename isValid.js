@@ -12,7 +12,7 @@ class Tree {
   constructor() {
     this.root = null;
   }
-  isValidBSTB(node, left = null, right = null) {
+  /* isValidBSTB(node, left = null, right = null) {
     if (!node) {
       return true;
     }
@@ -26,6 +26,26 @@ class Tree {
     const rightSide = this.isValidBSTB(node.right, node.val, right);
 
     return leftSide && rightSide;
+  } */
+
+  /* isValidBST(node){
+    if(!node){
+      return false; 
+    }
+  
+    if(node.left != null && node.left.key > node.key){ 
+      return false;
+    }
+  
+    if(node.right != null && node.right.key < node.key) {
+      return false;
+    }
+  
+    if(!this.isValidBST(node.left) || !this.isValidBST(node.right)) {
+      return false;
+    }
+    console.log('I ran')
+    return true; */  
   }
 }
 
@@ -37,6 +57,6 @@ function main() {
   t.right = new Node(12);
   let tt = new Tree();
 
-  console.log(tt.isValidBSTB(t));
+  console.log(tt.isValidBST(t));
 }
 main();
