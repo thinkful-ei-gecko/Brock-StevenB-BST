@@ -28,18 +28,14 @@ function maxHeightFinder(root, num = 1) {
 function main() {
   let bstree = new BinarySearchTree();
 
-  bstree.insert("E");
-  bstree.insert("A");
-  bstree.insert("S");
-  bstree.insert("Y");
-  bstree.insert("Q");
-  bstree.insert("U");
-  bstree.insert("E");
-  bstree.insert("S");
-  bstree.insert("T");
-  bstree.insert("I");
-  bstree.insert("O");
-  bstree.insert("N");
+  bstree.insert(3, 3);
+  bstree.insert(1, 1);
+  bstree.insert(4, 4);
+  bstree.insert(6, 6);
+  bstree.insert(9, 9);
+  bstree.insert(2, 2);
+  bstree.insert(5, 5);
+  bstree.insert(7, 7);
 
   //console.log(bstree);
   //console.log(maxHeightFinder(bst));
@@ -61,3 +57,32 @@ function tree(t){
 loops through the tree to add up all of the values of all of the nodes on both sides.
 
 */
+
+// problem 7
+
+const thirdLargestNode = (node, newArr = []) => {
+  if (node == null) {
+    return newArr;
+  }
+
+  // push node.key into newArr, increment to the right, THEN check if a left key is present
+  let nodeKey = node.key;
+  newArr.push(nodeKey);
+
+  thirdLargestNode(node.right, newArr);
+  // thirdLargestNode(node.right.left, newArr);
+  if (node.left) {
+    thirdLargestNode(node.left, newArr);
+  }
+
+  return newArr;
+}
+
+const thirdLargestNodeSort = (bst) => {
+  const BSTArray = thirdLargestNode(bst)
+  const sortedArr = BSTArray.sort((a ,b) => b - a);
+  return sortedArr[2];
+} 
+
+// console.log(main());
+console.log(thirdLargestNodeSort(main()));
