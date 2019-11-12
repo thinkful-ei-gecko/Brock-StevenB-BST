@@ -1,6 +1,7 @@
-const BinarySearchTree = require('./bst');
+const BinarySearchTree = require("./bst");
 
 // Q5. Create an algorithm to find the height of a tree.
+// time complexity is O(n) because it has to traverse every single node.
 function maxHeightFinder(root, num = 1) {
   // here's just base case -- if you get an empty root(because you definitely will at some point, just return a depth of zero because there's nothing in the tree!
   if (root === null) {
@@ -16,36 +17,72 @@ function maxHeightFinder(root, num = 1) {
       maxHeightFinder(root.right, num + 1),
       maxHeightFinder(root.left, num + 1)
     );
-  } 
-  else if (root.right !== null) {
+  } else if (root.right !== null) {
     return maxHeightFinder(root.right, num + 1);
-  } 
-  else {
+  } else {
     return maxHeightFinder(root.left, num + 1);
   }
 }
 
+// Q5 validate a binary search tree algorithm
+let last_logged;
+
+function isValidBST(root) {
+  console.log(this.key)
+
+  if (root === null) {
+    console.log("root is null");
+    return true;
+  }
+  if (!isValidBST(root.left)) {
+    console.log('no left root')
+    return false;
+  }
+
+  if (last_logged !== null && root.key <= last_logged) {
+    console.log('root key is <= last logged')
+    return false;
+  }
+
+  last_logged = root.key;
+
+  if (!isValidBST(root.right)) {
+    console.log('no right root')
+    return false;
+  }
+  console.log('made it to bottom')
+
+  return true;
+}
+
+
 function main() {
-  let bst = new BinarySearchTree();
+  let bstree = new BinarySearchTree();
+  let tt = new Tree();
 
-  bst.insert('E');
-  bst.insert('A');
-  bst.insert('S');
-  bst.insert('Y');
-  bst.insert('Q');
-  bst.insert('U');
-  bst.insert('E');
-  bst.insert('S');
-  bst.insert('T');
-  bst.insert('I');
-  bst.insert('O');
-  bst.insert('N');
+console.log(tt.isValidBSTB())
 
-  console.log(maxHeightFinder(bst));
+  bstree.insert("E");
+  bstree.insert("A");
+  bstree.insert("S");
+  bstree.insert("Y");
+  bstree.insert("Q");
+  bstree.insert("U");
+  bstree.insert("E");
+  bstree.insert("S");
+  bstree.insert("T");
+  bstree.insert("I");
+  bstree.insert("O");
+  bstree.insert("N");
+
+  //console.log(bstree);
+
+  console.log(!!isValidBST(bstree));
+  //console.log(maxHeightFinder(bst));
 
   //console.log(bst.find('T'));
 
-  //console.log(bst);
+  //console.log(bstree);
 }
 main();
 
