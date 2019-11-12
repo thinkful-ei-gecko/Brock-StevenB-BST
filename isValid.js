@@ -1,5 +1,7 @@
 const BinarySearchTree = require("./bst");
 
+// Q5 validate a binary search tree algorithm
+
 class Node {
   constructor(data) {
     this.data = data;

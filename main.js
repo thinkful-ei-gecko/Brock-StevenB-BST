@@ -24,43 +24,9 @@ function maxHeightFinder(root, num = 1) {
   }
 }
 
-// Q5 validate a binary search tree algorithm
-let last_logged;
-
-function isValidBST(root) {
-  console.log(this.key)
-
-  if (root === null) {
-    console.log("root is null");
-    return true;
-  }
-  if (!isValidBST(root.left)) {
-    console.log('no left root')
-    return false;
-  }
-
-  if (last_logged !== null && root.key <= last_logged) {
-    console.log('root key is <= last logged')
-    return false;
-  }
-
-  last_logged = root.key;
-
-  if (!isValidBST(root.right)) {
-    console.log('no right root')
-    return false;
-  }
-  console.log('made it to bottom')
-
-  return true;
-}
-
 
 function main() {
   let bstree = new BinarySearchTree();
-  let tt = new Tree();
-
-console.log(tt.isValidBSTB())
 
   bstree.insert("E");
   bstree.insert("A");
@@ -76,13 +42,11 @@ console.log(tt.isValidBSTB())
   bstree.insert("N");
 
   //console.log(bstree);
-
-  console.log(!!isValidBST(bstree));
   //console.log(maxHeightFinder(bst));
-
   //console.log(bst.find('T'));
-
   //console.log(bstree);
+
+  return bstree;
 }
 main();
 
